@@ -1,0 +1,86 @@
+﻿
+
+.gameborder {
+    height: 640px;
+    width:1000px;
+    background: lavender;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.dead {
+    background: red !important;
+}
+
+.rock {
+    width: 100px;
+    height: 160px;
+    background: brown;
+    margin: auto;
+    padding: 2px;
+    border-color: wheat;
+    border-bottom: ridge;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+
+#Ninja {
+    width: 100px;
+    height: 100px;
+  
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: -100px;
+}
+
+
+#Ninja .right {
+    margin-left: -200px;
+}
+
+#Ninja .left {
+    margin-right: -200px;
+    transform:scaleX(-1);
+}
+
+
+
+.rock div {
+    width: 200px;
+    height: 16px;
+    background: brown;
+    display: table;
+    margin-top: -60px;
+}
+
+.rock .left{
+    width: 100px;
+    height: 10px;
+    background: brown;
+    display: table;
+    margin-left: 200px;
+}
+
+.rock .right {
+    width: 100px;
+    height: 10px;
+    background: brown;
+    display: table;
+    margin-right: 200px;
+}
+
+.rock .non {
+    width: 0px;
+    background: brown;
+    display: table;
+}
+
+
+
+
