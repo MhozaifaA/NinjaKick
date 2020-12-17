@@ -58,6 +58,9 @@ const background = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://
 </g></g >
 </svg >`;
 
+function timeout(delay) {
+    return new Promise(res => setTimeout(res, delay));
+}
 
 function RandomRocks(itr) {
 
@@ -82,6 +85,7 @@ function RandomRocks(itr) {
                 rocks.push({
                     Key: iter++,
                     Float: range[j].Float,
+                    Level: randomIntFromInterval(1, 10)>8?2:1,
                 });
             }
         }
@@ -129,18 +133,23 @@ export class NinjaKick extends Component {
     }
   
 
+    allowAsync = false;
 
-    RemoveLast =  (press) => {
+    RemoveLast =async  (press) => {
 
+        if (!this.allowAsync)
+            return;
+        this.allowAsync = false;
 
         if (press.key !== 'd' && press.key !== 'a')
             return;
+
 
         var IsRealDead = false;
 
         if (this.state.IsDead) {
             IsRealDead = false;
-            this.setState({ Rocks: RandomRocks(0), IsDead: false, Score: 0, NinjaImage: `/ninja.png`});
+            await this.setState({ Rocks: RandomRocks(0), IsDead: false, Score: 0, NinjaImage: `/ninja.png` });
             return;
         }
 
@@ -149,49 +158,69 @@ export class NinjaKick extends Component {
 
         const pressFlaot = press.key === 'd' ? "right" : "left";
 
-        this.setState({ Ninja: pressFlaot });
+        await this.setState({ Ninja: pressFlaot });
 
         if (this.state.Rocks[0].Float !== pressFlaot) {
             const Rocks = [...this.state.Rocks];
-            Rocks.shift();
-            const Score = this.state.Score + 1; //Rocks.shift().Key + 1;
-            this.setState({ Rocks, Score });
+
+            if (Rocks[0].Level > 1) {
+                Rocks[0].Level = 1;
+                this.setState({ Rocks});
+
+            } else {
+                Rocks.shift();
+            }
+
+
+            const Score = this.state.Score + this.state.Level; //Rocks.shift().Key + 1;
+            await  this.setState({ Rocks, Score });
 
             if (this.state.HighScore < Score) {
-                this.setState({ HighScore: Score });
+                await  this.setState({ HighScore: Score });
                 localStorage.setItem("top", this.state.HighScore);
             }
 
 
         } else {
       
-            this.setState({ IsDead: true });
+            await  this.setState({ IsDead: true });
             IsRealDead = true;
         }
 
 
         if (this.state.Rocks.length === this.state.RockVisible) {
-            this.setState({ Rocks: RandomRocks(this.state.Score + 4) });
+            await  this.setState({ Rocks: RandomRocks(this.state.Score + 4) });
         }
 
 
         // reset to stand or day when up
-        this.setState({ NinjaImage: `/ninja${IsRealDead ? 0 : ""}.png` });
+        await this.setState({ NinjaImage: `/ninja${IsRealDead ? 0 : ""}.png`, Level: Math.ceil(this.state.Score / 50) });
         IsRealDead = false;
 
 
-        this.setState({ Level: Math.ceil(this.state.Score / 100) });
-        
+       // await this.setState({ Level: Math.ceil(this.state.Score / 50) });
+        //await this.forceUpdate();
 
     }
 
 
-    changeMove =  (press) => {
+    changeMove = async (press) => {
+        if (this.allowAsync)
+            return;
+
         if (press.key !== 'd' && press.key !== 'a')
             return;
-        this.setState({ NinjaImage: `/ninja${this.state.IsDead ? 0 : randomIntFromInterval(1, 3)}.png` });
-        }
+        await this.setState({ NinjaImage: `/ninja${this.state.IsDead ? 0 : randomIntFromInterval(1, 3)}.png` }
+            , async ()=> {
+               // await timeout(100);
+            }); 
 
+       // await this.forceUpdate();
+     //   await timeout(100);
+        this.allowAsync = true;
+    }
+
+    _
 
     render() {
       //onKeyDown={(e)=>this.changeMove(e)} onKeyUp={(e) => this.RemoveLast(e)}
@@ -213,7 +242,7 @@ export class NinjaKick extends Component {
 
                 <div className={this.state.IsDead ? "text-center gameborder dead" : "text-center gameborder"} >
                     {this.state.Rocks.slice(0, this.state.RockVisible).reverse().map(rock =>
-                        <div key={rock.Key} className="rock" lol={rock.Key} >
+                        <div key={rock.Key} className={rock.Level===1?"rock":"rock dual"} k={rock.Key} >
                              <div className={rock.Float} ></div>
                         </div>
                     )}

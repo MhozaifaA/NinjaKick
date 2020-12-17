@@ -30,7 +30,7 @@
 }
 
 .dead {
-    background: brown !important;
+    background: #673435 !important;
 }
 
 
@@ -43,7 +43,7 @@
 .rock {
     width: 100px;
     height: 160px;
-    background: brown;
+    background: #673435;
     margin: auto;
     padding: 2px;
     border-color: wheat;
@@ -52,6 +52,15 @@
     display: flex;
     justify-content: center;
 }
+
+.dual, .dual div {
+    background: #301211 !important;
+}
+
+
+
+
+
 
 
 #Ninja {
@@ -78,7 +87,7 @@
 .rock div {
     width: 200px;
     height: 16px;
-    background: brown;
+    background: #673435;
     display: table;
     margin-top: -60px;
 }
@@ -86,7 +95,7 @@
 .rock .left{
     width: 100px;
     height: 10px;
-    background: brown;
+    background: #673435;
     display: table;
     margin-left: 200px;
 }
@@ -94,14 +103,14 @@
 .rock .right {
     width: 100px;
     height: 10px;
-    background: brown;
+    background: #673435;
     display: table;
     margin-right: 200px;
 }
 
 .rock .non {
     width: 0px;
-    background: brown;
+    background: #673435;
     display: table;
 }
 
