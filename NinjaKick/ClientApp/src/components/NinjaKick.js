@@ -47,28 +47,23 @@ export class NinjaKick extends Component {
             Ninja: "left",
             Score: 0,
             IsDead: false,
-            HeightScore:0,
+            HighScore:0,
         };
 
        
     }
 
-    //componentDidMount() {
-    //   // this.UpdateStorage();
-    //}
+    componentDidMount() {
+        const top = localStorage.getItem("top");
+        if (top === null) {
+            localStorage.setItem("top", 0);
+        } else {
+            this.setState({ HighScore: top });
+        }
+       // this.UpdateStorage();
+    }
 
-    //UpdateStorage = () => {
-
-    //    var score = localStorage.getItem("top");
-    //    if (score === null) {
-    //        localStorage.setItem("top", 0);
-    //    } else {
-    //        if (this.props.Score >= score) {
-    //            localStorage.setItem("top", this.props.HeightScore);
-    //            this.setState({ HeightScore: score });
-    //        }
-    //    }
-    //}
+  
 
 
     RemoveLast = (press) => {
@@ -93,8 +88,9 @@ export class NinjaKick extends Component {
             const Score = Rocks.shift().Key + 1;
             this.setState({ Rocks, Score });
 
-            if (this.state.HeightScore < Score) {
-                this.setState({ HeightScore: Score });
+            if (this.state.HighScore < Score) {
+                this.setState({ HighScore: Score });
+                localStorage.setItem("top", this.state.HighScore);
             }
 
 
@@ -110,6 +106,8 @@ export class NinjaKick extends Component {
             this.setState({ Rocks: RandomRocks(this.state.Score + 4) });
         }
 
+        
+
     }
 
 
@@ -117,7 +115,7 @@ export class NinjaKick extends Component {
         return (
             <React.Fragment>
                 <h2>Score :{this.state.Score}{this.state.IsDead ? "  Your Lost! press any key to agin" : ""}</h2>
-                <span>Height Score:{this.state.HeightScore} </span>
+                <span>Height Score:{this.state.HighScore} </span>
                 <div className={this.state.IsDead ? "text-center gameborder dead" : "text-center gameborder" } tabIndex="0" onKeyPress={(e) => this.RemoveLast(e)}>
                     {this.state.Rocks.slice(0, 4).reverse().map(rock =>
                         <div key={rock.Key} className="rock" lol={rock.Key} >
