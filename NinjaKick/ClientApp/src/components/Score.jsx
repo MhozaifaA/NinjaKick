@@ -3,14 +3,14 @@
 
 
 const Score = props => <React.Fragment>
-    { (props.IsDead)?
-     <p className="message">Your Lost! press any key</p>:null
+    { (props.isDead)?
+        <p className="message">You Smashed! press key</p>:null
     }
     <div className="score">
-        <h2>Score:{props.Score}</h2>
-        <span>High Score:{props.HighScore} </span>
+        <h2>Score:{props.score}</h2>
+        <span>High Score:{props.highScore} </span>
         <br></br>
-        <span>Level:{props.Level} </span>
+        <span>Level:{props.level} </span>
     </div>
 </React.Fragment>;
 

@@ -24,6 +24,11 @@
     margin: auto;
 }
 
+/*position: absolute;
+z-index: 100;
+float: right;
+right: 20%;*/
+
 .level {
     font-size: xx-large;
     font-weight: bold;
@@ -31,6 +36,8 @@
     z-index: 99;
     position: absolute;
 }
+
+
 
 .score {
     z-index: 100;
