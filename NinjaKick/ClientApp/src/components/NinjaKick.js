@@ -38,12 +38,23 @@ function RandomRocks(itr) {
                 rocks.push({
                     Key: iter++,
                     Float: range[j].Float,
-                    Level: randomIntFromInterval(1, 10)>8?2:1,
+                    Level: GetRandomlyLevel(),
                 });
             }
         }
     }
     return rocks;
+}
+
+function GetRandomlyLevel() {
+    const rand = randomIntFromInterval(1, 10);
+    switch (rand) {
+        case 10:
+            return 3;
+        case  1||2:
+            return 2;
+        default: return 1;
+    }
 }
 
 export class NinjaKick extends Component {
@@ -76,25 +87,25 @@ export class NinjaKick extends Component {
             this.setState({ HighScore: top });
         }
 
-        document.addEventListener("keyup", this.RemoveLast, false);
-        document.addEventListener("keydown", this.changeMove, false);
+        document.addEventListener("keyup", this.onNinjaKeyUp, false);
+        document.addEventListener("keydown", this.onNinjaKeyDown, false);
        // this.UpdateStorage();
     }
 
 
     componentWillUnmount() {
-        document.removeEventListener("keyup", this.RemoveLast, false);
-        document.removeEventListener("keydown", this.changeMove, false);
+        document.removeEventListener("keyup", this.onNinjaKeyUp, false);
+        document.removeEventListener("keydown", this.onNinjaKeyDown, false);
     }
   
 
-    allowAsync = false;
+    isBlockPress = false;
 
-    RemoveLast =async  (press) => {
+    onNinjaKeyUp =async  (press) => {
 
-        if (!this.allowAsync)
+        if (!this.isBlockPress)
             return;
-        this.allowAsync = false;
+        this.isBlockPress = false;
 
         if (press.key !== 'd' && press.key !== 'a')
             return;
@@ -119,18 +130,14 @@ export class NinjaKick extends Component {
 
         if (this.state.Rocks[0].Float !== pressFlaot) {
             const Rocks = [...this.state.Rocks];
-
-            if (Rocks[0].Level > 1) {
-                Rocks[0].Level = 1;
-                this.setState({ Rocks});
-
-            } else {
+         
+            if (--Rocks[0].Level ===0) {
                 Rocks.shift();
             }
 
+            const Score = this.state.Score + this.state.Level; 
 
-            const Score = this.state.Score + this.state.Level; //Rocks.shift().Key + 1;
-            await  this.setState({ Rocks, Score });
+            await this.setState({ Rocks, Score });
 
             if (this.state.HighScore < Score) {
                 await  this.setState({ HighScore: Score });
@@ -151,7 +158,7 @@ export class NinjaKick extends Component {
 
 
         if (this.state.Rocks.length === this.state.RockVisible) {
-            await  this.setState({ Rocks: RandomRocks(this.state.Score + 4) });
+            await this.setState({ Rocks: RandomRocks(this.state.Score + this.state.RockVisible) });
         }
 
 
@@ -168,8 +175,8 @@ export class NinjaKick extends Component {
     }
 
 
-    changeMove = async (press) => {
-        if (this.allowAsync)
+    onNinjaKeyDown = async (press) => {
+        if (this.isBlockPress)
             return;
 
         if (press.key !== 'd' && press.key !== 'a')
@@ -187,7 +194,7 @@ export class NinjaKick extends Component {
 
        // await this.forceUpdate();
        // await timeout(100);
-        this.allowAsync = true;
+        this.isBlockPress = true;
     }
 
     handelClickAudio = Audio => {
@@ -210,7 +217,8 @@ export class NinjaKick extends Component {
 
                 <div className={this.state.IsDead ? "text-center gameborder dead" : "text-center gameborder"} >
                     {this.state.Rocks.slice(0, this.state.RockVisible).reverse().map(rock =>
-                        <div key={rock.Key} className={rock.Level===1?"rock":"rock dual"} k={rock.Key} >
+                        <div key={rock.Key} className={rock.Level === 1 ? "rock" : "rock dual"} k={rock.Key} >
+                            {rock.Level === 1 ? null : <span className="level">×{rock.Level}</span>}
                              <div className={rock.Float} ></div>
                         </div>
                     )}

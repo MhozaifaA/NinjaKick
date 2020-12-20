@@ -24,6 +24,14 @@
     margin: auto;
 }
 
+.level {
+    font-size: xx-large;
+    font-weight: bold;
+    color: white;
+    z-index: 99;
+    position: absolute;
+}
+
 .score {
     z-index: 100;
     position: absolute;
