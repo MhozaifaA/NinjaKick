@@ -32,24 +32,12 @@ export class Ninja extends Component {
         let ninja1 = this.props.image !==   this.imgNinja1;
         let ninja2 = this.props.image !==   this.imgNinja2;
         let ninja3 = this.props.image !== this.imgNinja3;
-        console.log(ninja, ninja0, ninja1, ninja2, ninja3);
         return (<div id="Ninja">
-
-            <img hidden={ninja} className={this.props.state} src={this.imgNinja} key={this.imgNinja} alt=""
-                width="100" height="100" />
-
-            <img hidden={ninja0} className={this.props.state} src={this.imgNinja0} key={this.imgNinja0} alt=""
-                width="100" height="100" />
-
-            <img hidden={ninja1} className={this.props.state} src={this.imgNinja1} key={this.imgNinja1} alt=""
-                width="100" height="100" />
-
-            <img hidden={ninja2} className={this.props.state} src={this.imgNinja2} key={this.imgNinja2} alt=""
-                width="100" height="100" />
-
-            <img hidden={ninja3} className={this.props.state} src={this.imgNinja3} key={this.imgNinja3} alt=""
-                width="100" height="100" />
-
+            <img  hidden={ninja} className={this.props.state}  src={this.imgNinja} key={this.imgNinja} alt="" width="100" height="100" />
+            <img hidden={ninja0} className={this.props.state} src={this.imgNinja0} key={this.imgNinja0} alt="" width="100" height="100" />
+            <img hidden={ninja1} className={this.props.state} src={this.imgNinja1} key={this.imgNinja1} alt="" width="100" height="100" />
+            <img hidden={ninja2} className={this.props.state} src={this.imgNinja2} key={this.imgNinja2} alt="" width="100" height="100" />
+            <img hidden={ninja3} className={this.props.state} src={this.imgNinja3} key={this.imgNinja3} alt="" width="100" height="100" />
         </div>
 
         );

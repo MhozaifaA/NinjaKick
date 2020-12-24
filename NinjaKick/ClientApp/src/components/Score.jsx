@@ -4,7 +4,7 @@
 
 const Score = props => <React.Fragment>
     { (props.isDead)?
-        <p className="message">You Smashed! press key</p>:null
+        <p className="message">You Lost! press key</p>:null
     }
     <div className="score">
         <h2>Score:{props.score}</h2>

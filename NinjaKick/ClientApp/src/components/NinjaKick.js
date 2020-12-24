@@ -6,6 +6,7 @@ import { Ninja } from './Ninja';
 import './NinjaKick.css';
 import Rock from './Rock';
 import Score from './Score';
+import { Timer } from './Timer';
 
 function randomIntFromInterval(min, max) { // min and max included 
     return Math.floor(Math.random() * (max - min + 1) + min);
@@ -123,6 +124,7 @@ export class NinjaKick extends Component {
 
 
     isBlockPress = false;
+    IsRealDead = false;
 
     onNinjaKeyUp = async (press) => {
 
@@ -131,14 +133,16 @@ export class NinjaKick extends Component {
         this.isBlockPress = false;
         if (press.keyCode !== this.keyD && press.keyCode !== this.keyA)
             return;
+        
 
-
-        var IsRealDead = false;
+        this.IsRealDead = false;
 
         if (this.state.IsDead) {
-            IsRealDead = false;
+            this.IsRealDead = false;
             await this.setState({ Rocks: RandomRocks(0), IsDead: false, Score: 0, NinjaImage: `/ninja.png` });
             // await timeout(100);
+
+            this.Timer.init();
 
             return;
         }
@@ -155,6 +159,9 @@ export class NinjaKick extends Component {
 
             if (--Rocks[0].Level === 0) {
                 Rocks.shift();
+            // update time 
+
+                this.Timer.plus(3);
             }
 
             const Score = this.state.Score + this.state.Level;
@@ -170,12 +177,15 @@ export class NinjaKick extends Component {
         } else {
 
             await this.setState({ IsDead: true });
-            IsRealDead = true;
+            this.IsRealDead = true;
 
             if (this.state.Audio) {
                 let audio = new Audio(`/sound${0}.mp3`);
                 audio.play();
             }
+
+            this.Timer.stop();
+
         }
 
 
@@ -186,8 +196,8 @@ export class NinjaKick extends Component {
 
         // reset to stand or day when up
 
-        await this.setState({ NinjaImage: `/ninja${IsRealDead ? 0 : ""}.png`, Level: Math.ceil(this.state.Score / 50) });
-        IsRealDead = false;
+        await this.setState({ NinjaImage: `/ninja${this.IsRealDead ? 0 : ""}.png`, Level: Math.ceil(this.state.Score / 50) });
+        this.IsRealDead = false;
         //  await timeout(100);
 
 
@@ -224,10 +234,22 @@ export class NinjaKick extends Component {
     }
 
 
+    handelFinish = () => {
+       this.setState({ IsDead: true, NinjaImage: `/ninja${0}.png`});
+       this.IsRealDead = true;
+       if (this.state.Audio) {
+           let audio = new Audio(`/sound${0}.mp3`);
+           audio.play();
+       }
+       this.IsRealDead = false;
+    }
+
 
     render() {
         return (
             <React.Fragment >
+                <Timer onFinish={this.handelFinish} onRef={ref => (this.Timer = ref)} life={100} />
+
                 <Background />
 
                 <Score score={this.state.Score} level={this.state.Level}
