@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { AudioButton } from './AudioButton';
 import Background from './Background';
-import Ninja from './Ninja';
+import { Ninja } from './Ninja';
 import './NinjaKick.css';
 import Rock from './Rock';
 import Score from './Score';
