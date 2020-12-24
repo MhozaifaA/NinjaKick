@@ -93,12 +93,32 @@ export class NinjaKick extends Component {
         document.addEventListener("keyup", this.onNinjaKeyUp, false);
         document.addEventListener("keydown", this.onNinjaKeyDown, false);
         // this.UpdateStorage();
+
+        document.addEventListener("mouseup", this.onMouseUpCord, false);
+        document.addEventListener("mousedown", this.onMouseDownCord, false);
     }
 
 
     componentWillUnmount() {
         document.removeEventListener("keyup", this.onNinjaKeyUp, false);
         document.removeEventListener("keydown", this.onNinjaKeyDown, false);
+
+        document.addEventListener("mouseup", this.onMouseUpCord, false);
+        document.addEventListener("mousedown", this.onMouseDownCord, false);
+    }
+
+    onMouseUpCord = async (e) => {
+        if (window.innerWidth / 2 > e.pageX)
+            await this.onNinjaKeyUp({ keyCode: this.keyA });
+        else if (window.innerWidth / 2 < e.pageX)
+            await this.onNinjaKeyUp({ keyCode: this.keyD });
+    }
+
+    onMouseDownCord = async (e) => {
+        if (window.innerWidth / 2 > e.pageX)
+            await this.onNinjaKeyDown({ keyCode: this.keyD });
+        else if (window.innerWidth / 2 < e.pageX)
+            await this.onNinjaKeyDown({ keyCode: this.keyA });
     }
 
 
@@ -126,7 +146,7 @@ export class NinjaKick extends Component {
 
 
 
-        const pressFlaot = press.keyCode === this.keyD ? "right" : "left";
+        const pressFlaot = press.keyCode === this.keyD ? "right" : "left" ;
 
         await this.setState({ Ninja: pressFlaot });
 
@@ -203,7 +223,7 @@ export class NinjaKick extends Component {
         this.setState({ Audio });
     }
 
-    
+
 
     render() {
         return (
@@ -212,7 +232,7 @@ export class NinjaKick extends Component {
 
                 <Score score={this.state.Score} level={this.state.Level}
                     highScore={this.state.HighScore} isDead={this.state.IsDead} />
-            
+
                 <AudioButton state={this.state.Audio} onClickAudio={this.handelClickAudio} />
 
                 <div className={this.state.IsDead ? "text-center gameborder dead" : "text-center gameborder"} >

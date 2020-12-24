@@ -1,4 +1,9 @@
-﻿
+﻿body {
+    overflow: hidden;
+    margin: 0;
+    height: 100%;
+    user-select: none;
+}
 
 .gameborder {
     /*height: 640px;
@@ -123,13 +128,13 @@ right: 20%;*/
 }
 
 
-#Ninja .right {
+#Ninja .left {
     margin-left: -200px;
 }
 
-#Ninja .left {
+#Ninja .right {
     margin-right: -200px;
-    transform:scaleX(-1);
+    transform: scaleX(-1);
 }
 
 
@@ -142,7 +147,7 @@ right: 20%;*/
     margin-top: -60px;
 }
 
-.rock .left{
+.rock .right {
     width: 100px;
     height: 10px;
     background: #673435;
@@ -150,7 +155,7 @@ right: 20%;*/
     margin-left: 200px;
 }
 
-.rock .right {
+.rock .left {
     width: 100px;
     height: 10px;
     background: #673435;
