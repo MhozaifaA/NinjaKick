@@ -21,7 +21,6 @@ var iter = 0;
 
 function RandomRocks(valid) {
 
-  
 
     var rocks = [];
 
@@ -62,11 +61,6 @@ function RandomRocks(valid) {
 
 
     }
-
-    //if (rocks.length < valid+10) {
-    //    RandomRocks(valid);
-    //}
-    console.log(rocks);
 
     return rocks;
 }
@@ -166,7 +160,6 @@ export class NinjaKick extends Component {
             await this.setState({ Rocks: RandomRocks(this.state.RockVisible), IsDead: false, Score: 0, NinjaImage: `/ninja.png` });
             // await timeout(100);
             this.Timer.init();
-
             return;
         }
 
@@ -205,26 +198,20 @@ export class NinjaKick extends Component {
                 let audio = new Audio(`/sound${0}.mp3`);
                 audio.play();
             }
-
             this.Timer.stop();
-
         }
-
 
         if (this.state.Rocks.length <= this.state.RockVisible + 10) {
             await this.setState({ Rocks: [...this.state.Rocks, ...RandomRocks(this.state.RockVisible)]  });
         }
 
 
-        // reset to stand or day when up
-
         let level = Math.ceil(this.state.Score / 50);
         await this.setState({ NinjaImage: `/ninja${this.IsRealDead ? 0 : ""}.png`, Level: level === 0? 1:level });
         this.IsRealDead = false;
         //  await timeout(100);
 
-
-        // await this.setState({ Level: Math.ceil(this.state.Score / 50) });
+  
         //await this.forceUpdate();
 
     }
