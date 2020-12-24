@@ -21,30 +21,7 @@ var iter = 0;
 
 function RandomRocks(valid) {
 
-    //let rangeRocks = [
-    //    [{ Repeat: 3, Float: "non" }, { Repeat: 7, Float: "right" }, { Repeat: 5, Float: "left" }, { Repeat: 3, Float: "right" }],//100
-    //    [{ Repeat: 3, Float: "right" }, { Repeat: 5, Float: "left" }, { Repeat: 7, Float: "right" }],
-    //    [{ Repeat: 2, Float: "right" }, { Repeat: 3, Float: "non" }, { Repeat: 10, Float: "left" }, { Repeat: 2, Float: "right" }],
-    //    [{ Repeat: 2, Float: "right" }, { Repeat: 3, Float: "left" }, { Repeat: 2, Float: "right" }],
-    //    [{ Repeat: 2, Float: "right" }, { Repeat: 3, Float: "non" }, { Repeat: 3, Float: "non" }, { Repeat: 3, Float: "left" }, { Repeat: 5, Float: "right" }],
-    //    [{ Repeat: 9, Float: "right" }, { Repeat: 4, Float: "left" }, { Repeat: 6, Float: "right" }],
-    //    [{ Repeat: 3, Float: "non" }, { Repeat: 2, Float: "right" }, { Repeat: 2, Float: "left" }, { Repeat: 2, Float: "right" }],
-    //    [{ Repeat: 2, Float: "right" }, { Repeat: 2, Float: "left" }, { Repeat: 2, Float: "right" }],
-    //    [{ Repeat: 2, Float: "right" }, { Repeat: 2, Float: "left" }, { Repeat: 2, Float: "right" }, { Repeat: 3, Float: "non" },]]; //700
-
-
-    //for (let i = 0; i < rangeRocks.length; i++) {
-    //    let range = rangeRocks[randomIntFromInterval(1, i + 1) - 1];
-    //    for (let j = 0; j < range.length; j++) {
-    //        for (let k = 0; k < randomIntFromInterval(range[j].Repeat - 2, range[j].Repeat); k++) {
-    //            rocks.push({
-    //                Key: iter++,
-    //                Float: range[j].Float,
-    //                Level: GetRandomlyLevel(),
-    //            });
-    //        }
-    //    }
-    //}
+  
 
     var rocks = [];
 
@@ -62,6 +39,7 @@ function RandomRocks(valid) {
                 Key: iter++,
                 Float: "left",
                 Level: GetRandomlyLevel(),
+                Award:"freezing"
             });
         }
 
@@ -234,9 +212,7 @@ export class NinjaKick extends Component {
 
 
         if (this.state.Rocks.length <= this.state.RockVisible + 10) {
-            console.log(this.state.Rocks.length);
             await this.setState({ Rocks: [...this.state.Rocks, ...RandomRocks(this.state.RockVisible)]  });
-            console.log(this.state.Rocks.length);
         }
 
 
