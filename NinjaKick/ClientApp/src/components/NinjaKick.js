@@ -17,34 +17,79 @@ function timeout(delay) {
     return new Promise(res => setTimeout(res, delay));
 }
 
-function RandomRocks(itr) {
+var iter = 0;
 
-    let rangeRocks = [
-        [{ Repeat: 3, Float: "non" }, { Repeat: 7, Float: "right" }, { Repeat: 5, Float: "left" }, { Repeat: 3, Float: "right" }],//100
-        [{ Repeat: 3, Float: "right" }, { Repeat: 5, Float: "left" }, { Repeat: 7, Float: "right" }],
-        [{ Repeat: 2, Float: "right" }, { Repeat: 3, Float: "non" }, { Repeat: 10, Float: "left" }, { Repeat: 2, Float: "right" }],
-        [{ Repeat: 2, Float: "right" }, { Repeat: 3, Float: "left" }, { Repeat: 2, Float: "right" }],
-        [{ Repeat: 2, Float: "right" }, { Repeat: 3, Float: "non" }, { Repeat: 3, Float: "non" }, { Repeat: 3, Float: "left" }, { Repeat: 5, Float: "right" }],
-        [{ Repeat: 9, Float: "right" }, { Repeat: 4, Float: "left" }, { Repeat: 6, Float: "right" }],
-        [{ Repeat: 3, Float: "non" }, { Repeat: 2, Float: "right" }, { Repeat: 2, Float: "left" }, { Repeat: 2, Float: "right" }],
-        [{ Repeat: 2, Float: "right" }, { Repeat: 2, Float: "left" }, { Repeat: 2, Float: "right" }],
-        [{ Repeat: 2, Float: "right" }, { Repeat: 2, Float: "left" }, { Repeat: 2, Float: "right" }, { Repeat: 3, Float: "non" },]]; //700
+function RandomRocks(valid) {
 
-    let rocks = [];
+    //let rangeRocks = [
+    //    [{ Repeat: 3, Float: "non" }, { Repeat: 7, Float: "right" }, { Repeat: 5, Float: "left" }, { Repeat: 3, Float: "right" }],//100
+    //    [{ Repeat: 3, Float: "right" }, { Repeat: 5, Float: "left" }, { Repeat: 7, Float: "right" }],
+    //    [{ Repeat: 2, Float: "right" }, { Repeat: 3, Float: "non" }, { Repeat: 10, Float: "left" }, { Repeat: 2, Float: "right" }],
+    //    [{ Repeat: 2, Float: "right" }, { Repeat: 3, Float: "left" }, { Repeat: 2, Float: "right" }],
+    //    [{ Repeat: 2, Float: "right" }, { Repeat: 3, Float: "non" }, { Repeat: 3, Float: "non" }, { Repeat: 3, Float: "left" }, { Repeat: 5, Float: "right" }],
+    //    [{ Repeat: 9, Float: "right" }, { Repeat: 4, Float: "left" }, { Repeat: 6, Float: "right" }],
+    //    [{ Repeat: 3, Float: "non" }, { Repeat: 2, Float: "right" }, { Repeat: 2, Float: "left" }, { Repeat: 2, Float: "right" }],
+    //    [{ Repeat: 2, Float: "right" }, { Repeat: 2, Float: "left" }, { Repeat: 2, Float: "right" }],
+    //    [{ Repeat: 2, Float: "right" }, { Repeat: 2, Float: "left" }, { Repeat: 2, Float: "right" }, { Repeat: 3, Float: "non" },]]; //700
 
-    let iter = itr;
-    for (let i = 0; i < rangeRocks.length; i++) {
-        let range = rangeRocks[randomIntFromInterval(1, i + 1) - 1];
-        for (let j = 0; j < range.length; j++) {
-            for (var k = 0; k < randomIntFromInterval(range[j].Repeat - 2, range[j].Repeat); k++) {
-                rocks.push({
-                    Key: iter++,
-                    Float: range[j].Float,
-                    Level: GetRandomlyLevel(),
-                });
-            }
+
+    //for (let i = 0; i < rangeRocks.length; i++) {
+    //    let range = rangeRocks[randomIntFromInterval(1, i + 1) - 1];
+    //    for (let j = 0; j < range.length; j++) {
+    //        for (let k = 0; k < randomIntFromInterval(range[j].Repeat - 2, range[j].Repeat); k++) {
+    //            rocks.push({
+    //                Key: iter++,
+    //                Float: range[j].Float,
+    //                Level: GetRandomlyLevel(),
+    //            });
+    //        }
+    //    }
+    //}
+
+    var rocks = [];
+
+    for (let i = 0; i < valid; i++) {
+        let pack = randomIntFromInterval(2,10);
+        let left = randomIntFromInterval( 0, pack);
+        let right = pack - left;
+
+        let _non = randomIntFromInterval(0, 10);
+
+        let non = _non <= 3 ? _non : 0;
+
+        for (let j = 0; j < left; j++) {
+            rocks.push({
+                Key: iter++,
+                Float: "left",
+                Level: GetRandomlyLevel(),
+            });
         }
+
+        for (let j = 0; j < non; j++) {
+            rocks.push({
+                Key: iter++,
+                Float: "non",
+                Level: GetRandomlyLevel(),
+            });
+        }
+
+
+        for (let j = 0; j < right; j++) {
+            rocks.push({
+                Key: iter++,
+                Float: "right",
+                Level: GetRandomlyLevel(),
+            });
+        }
+
+
     }
+
+    //if (rocks.length < valid+10) {
+    //    RandomRocks(valid);
+    //}
+    console.log(rocks);
+
     return rocks;
 }
 
@@ -66,7 +111,7 @@ export class NinjaKick extends Component {
         //this.UpdateStorage=this.UpdateStorage.bind(this);
 
         this.state = {
-            Rocks: RandomRocks(0),
+            Rocks: RandomRocks(5),
             Ninja: "left",
             NinjaImage: "/ninja.png",
             Score: 0,
@@ -139,9 +184,9 @@ export class NinjaKick extends Component {
 
         if (this.state.IsDead) {
             this.IsRealDead = false;
-            await this.setState({ Rocks: RandomRocks(0), IsDead: false, Score: 0, NinjaImage: `/ninja.png` });
+            console.log("ded");
+            await this.setState({ Rocks: RandomRocks(this.state.RockVisible), IsDead: false, Score: 0, NinjaImage: `/ninja.png` });
             // await timeout(100);
-
             this.Timer.init();
 
             return;
@@ -160,7 +205,6 @@ export class NinjaKick extends Component {
             if (--Rocks[0].Level === 0) {
                 Rocks.shift();
             // update time 
-
                 this.Timer.plus(3);
             }
 
@@ -189,14 +233,17 @@ export class NinjaKick extends Component {
         }
 
 
-        if (this.state.Rocks.length === this.state.RockVisible) {
-            await this.setState({ Rocks: RandomRocks(this.state.Score + this.state.RockVisible) });
+        if (this.state.Rocks.length <= this.state.RockVisible + 10) {
+            console.log(this.state.Rocks.length);
+            await this.setState({ Rocks: [...this.state.Rocks, ...RandomRocks(this.state.RockVisible)]  });
+            console.log(this.state.Rocks.length);
         }
 
 
         // reset to stand or day when up
 
-        await this.setState({ NinjaImage: `/ninja${this.IsRealDead ? 0 : ""}.png`, Level: Math.ceil(this.state.Score / 50) });
+        let level = Math.ceil(this.state.Score / 50);
+        await this.setState({ NinjaImage: `/ninja${this.IsRealDead ? 0 : ""}.png`, Level: level === 0? 1:level });
         this.IsRealDead = false;
         //  await timeout(100);
 
