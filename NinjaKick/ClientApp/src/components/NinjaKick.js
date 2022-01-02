@@ -13,9 +13,9 @@ function randomIntFromInterval(min, max) { // min and max included
 }
 
 
-function timeout(delay) {
-    return new Promise(res => setTimeout(res, delay));
-}
+//function timeout(delay) {
+//    return new Promise(res => setTimeout(res, delay));
+//}
 
 var iter = 0;
 
@@ -168,7 +168,7 @@ export class NinjaKick extends Component {
 
         const pressFlaot = press.keyCode === this.keyD ? "right" : "left" ;
 
-        await this.setState({ Ninja: pressFlaot });
+        await this.setState({ Ninja: press.keyCode !== this.keyD ? "right" : "left" });
 
         if (this.state.Rocks[0].Float !== pressFlaot || this.state.Rocks[0].Level > 1) {
             const Rocks = [...this.state.Rocks];
@@ -258,7 +258,7 @@ export class NinjaKick extends Component {
     render() {
         return (
             <React.Fragment >
-                <Timer onFinish={this.handelFinish} onRef={ref => (this.Timer = ref)} life={100} />
+                <Timer onFinish={this.handelFinish} onRef={ref => (this.Timer = ref)} life={1000} />
 
                 <Background />
 

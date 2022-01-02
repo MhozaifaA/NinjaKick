@@ -152,7 +152,7 @@ right: 20%;*/
     height: 10px;
     background: #673435;
     display: table;
-    margin-left: 200px;
+    margin-left: -200px;
 }
 
 .rock .left {
@@ -160,7 +160,7 @@ right: 20%;*/
     height: 10px;
     background: #673435;
     display: table;
-    margin-right: 200px;
+    margin-right: -200px;
 }
 
 .rock .non {
