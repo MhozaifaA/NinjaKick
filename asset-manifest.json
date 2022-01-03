@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/MhozaifaA/NinjaKick/static/css/main.ecfa3bbf.chunk.css",
-    "main.js": "/MhozaifaA/NinjaKick/static/js/main.c2243854.chunk.js",
-    "main.js.map": "/MhozaifaA/NinjaKick/static/js/main.c2243854.chunk.js.map",
+    "main.js": "/MhozaifaA/NinjaKick/static/js/main.523a2c73.chunk.js",
+    "main.js.map": "/MhozaifaA/NinjaKick/static/js/main.523a2c73.chunk.js.map",
     "runtime-main.js": "/MhozaifaA/NinjaKick/static/js/runtime-main.e9df8ef3.js",
     "runtime-main.js.map": "/MhozaifaA/NinjaKick/static/js/runtime-main.e9df8ef3.js.map",
     "static/css/2.ff29d27e.chunk.css": "/MhozaifaA/NinjaKick/static/css/2.ff29d27e.chunk.css",
     "static/js/2.373895a0.chunk.js": "/MhozaifaA/NinjaKick/static/js/2.373895a0.chunk.js",
     "static/js/2.373895a0.chunk.js.map": "/MhozaifaA/NinjaKick/static/js/2.373895a0.chunk.js.map",
     "index.html": "/MhozaifaA/NinjaKick/index.html",
-    "precache-manifest.91ce06cf1e2e407611609415907aaefd.js": "/MhozaifaA/NinjaKick/precache-manifest.91ce06cf1e2e407611609415907aaefd.js",
+    "precache-manifest.2b7ce1e2037b0b6e54186fbe0181d391.js": "/MhozaifaA/NinjaKick/precache-manifest.2b7ce1e2037b0b6e54186fbe0181d391.js",
     "service-worker.js": "/MhozaifaA/NinjaKick/service-worker.js",
     "static/css/2.ff29d27e.chunk.css.map": "/MhozaifaA/NinjaKick/static/css/2.ff29d27e.chunk.css.map",
     "static/css/main.ecfa3bbf.chunk.css.map": "/MhozaifaA/NinjaKick/static/css/main.ecfa3bbf.chunk.css.map",
@@ -20,6 +20,6 @@
     "static/css/2.ff29d27e.chunk.css",
     "static/js/2.373895a0.chunk.js",
     "static/css/main.ecfa3bbf.chunk.css",
-    "static/js/main.c2243854.chunk.js"
+    "static/js/main.523a2c73.chunk.js"
   ]
 }
