@@ -167,8 +167,9 @@ export class NinjaKick extends Component {
 
 
         const pressFlaot = press.keyCode === this.keyD ? "right" : "left" ;
+        const newNinja = press.keyCode === this.keyA ? "right" : "left" ;
 
-        await this.setState({ Ninja: press.keyCode !== this.keyD ? "right" : "left" });
+        await this.setState({ Ninja: newNinja });
 
         if (this.state.Rocks[0].Float !== pressFlaot || this.state.Rocks[0].Level > 1) {
             const Rocks = [...this.state.Rocks];
@@ -258,9 +259,12 @@ export class NinjaKick extends Component {
     render() {
         return (
             <React.Fragment >
-                <Timer onFinish={this.handelFinish} onRef={ref => (this.Timer = ref)} life={1000} />
+                <Timer onFinish={this.handelFinish} onRef={ref => (this.Timer = ref)} life={100} />
 
                 <Background />
+
+                <p className="howto">press: A key / click mouse Left side -> to ninja kick left foot <br/>
+                    press: D key / click mous Right side -> to ninja kick Right foot </p>
 
                 <Score score={this.state.Score} level={this.state.Level}
                     highScore={this.state.HighScore} isDead={this.state.IsDead} />

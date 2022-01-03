@@ -12,7 +12,7 @@ export class Timer extends Component {
     interval = null;
 
     init() {
-        this.setState({ life: 1000 });
+        this.setState({ life: 100 });
         this.start();
     }
 
@@ -23,7 +23,7 @@ export class Timer extends Component {
                 this.stop();
                 this.props.onFinish();
             }
-        }, 1000);
+        }, 100); //you can use local var for keep first init life
     }
 
     stop() {
@@ -31,7 +31,7 @@ export class Timer extends Component {
     }
 
     plus(value) {
-        this.setState({ life: (this.state.life + value)<1000?this.state.life + value:1000 });
+        this.setState({ life: (this.state.life + value)<100?this.state.life + value:100 });
     }
 
     componentDidMount() {
@@ -61,5 +61,5 @@ export class Timer extends Component {
 
 
 Timer.defaultProps  = {
-    life: 1000
+    life: 100
 };

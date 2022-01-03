@@ -169,6 +169,14 @@ right: 20%;*/
     display: table;
 }
 
+.howto {
+    z-index: 99;
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 100px;
+    font-weight: 500;
+}
+
 
 
 
