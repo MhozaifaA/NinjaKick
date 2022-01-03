@@ -219,6 +219,8 @@ export class NinjaKick extends Component {
 
 
     onNinjaKeyDown = async (press) => {
+        console.log(`./NinjaKick/ninja${num}.png`);
+        console.log("this.isBlockPress",this.isBlockPress);
         if (this.isBlockPress)
             return;
 
