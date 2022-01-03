@@ -16,11 +16,11 @@ export class Ninja extends Component {
         super(props);
 
 
-        this.imgNinja = './NinjaKick/ninja.png';
-        this.imgNinja0 ='./NinjaKick/ninja0.png';
-        this.imgNinja1 ='./NinjaKick/ninja1.png';
-        this.imgNinja2 ='./NinjaKick/ninja2.png';
-        this.imgNinja3 ='./NinjaKick/ninja3.png';
+        this.imgNinja = '/NinjaKick/ninja.png';
+        this.imgNinja0 ='/NinjaKick/ninja0.png';
+        this.imgNinja1 ='/NinjaKick/ninja1.png';
+        this.imgNinja2 ='/NinjaKick/ninja2.png';
+        this.imgNinja3 ='/NinjaKick/ninja3.png';
 
 
     }
