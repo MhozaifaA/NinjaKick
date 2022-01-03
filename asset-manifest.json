@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/MhozaifaA/NinjaKick/static/css/main.ecfa3bbf.chunk.css",
-    "main.js": "/MhozaifaA/NinjaKick/static/js/main.668c24b0.chunk.js",
-    "main.js.map": "/MhozaifaA/NinjaKick/static/js/main.668c24b0.chunk.js.map",
-    "runtime-main.js": "/MhozaifaA/NinjaKick/static/js/runtime-main.e9df8ef3.js",
-    "runtime-main.js.map": "/MhozaifaA/NinjaKick/static/js/runtime-main.e9df8ef3.js.map",
-    "static/css/2.ff29d27e.chunk.css": "/MhozaifaA/NinjaKick/static/css/2.ff29d27e.chunk.css",
-    "static/js/2.373895a0.chunk.js": "/MhozaifaA/NinjaKick/static/js/2.373895a0.chunk.js",
-    "static/js/2.373895a0.chunk.js.map": "/MhozaifaA/NinjaKick/static/js/2.373895a0.chunk.js.map",
-    "index.html": "/MhozaifaA/NinjaKick/index.html",
-    "precache-manifest.972f25def012dbce229d4feaaf81b7d5.js": "/MhozaifaA/NinjaKick/precache-manifest.972f25def012dbce229d4feaaf81b7d5.js",
-    "service-worker.js": "/MhozaifaA/NinjaKick/service-worker.js",
-    "static/css/2.ff29d27e.chunk.css.map": "/MhozaifaA/NinjaKick/static/css/2.ff29d27e.chunk.css.map",
-    "static/css/main.ecfa3bbf.chunk.css.map": "/MhozaifaA/NinjaKick/static/css/main.ecfa3bbf.chunk.css.map",
-    "static/js/2.373895a0.chunk.js.LICENSE.txt": "/MhozaifaA/NinjaKick/static/js/2.373895a0.chunk.js.LICENSE.txt"
+    "main.css": "/NinjaKick/static/css/main.ecfa3bbf.chunk.css",
+    "main.js": "/NinjaKick/static/js/main.8c10dfe0.chunk.js",
+    "main.js.map": "/NinjaKick/static/js/main.8c10dfe0.chunk.js.map",
+    "runtime-main.js": "/NinjaKick/static/js/runtime-main.c917d36d.js",
+    "runtime-main.js.map": "/NinjaKick/static/js/runtime-main.c917d36d.js.map",
+    "static/css/2.ff29d27e.chunk.css": "/NinjaKick/static/css/2.ff29d27e.chunk.css",
+    "static/js/2.373895a0.chunk.js": "/NinjaKick/static/js/2.373895a0.chunk.js",
+    "static/js/2.373895a0.chunk.js.map": "/NinjaKick/static/js/2.373895a0.chunk.js.map",
+    "index.html": "/NinjaKick/index.html",
+    "precache-manifest.eb86f5ed8394fb3a234d95d98ea43aa7.js": "/NinjaKick/precache-manifest.eb86f5ed8394fb3a234d95d98ea43aa7.js",
+    "service-worker.js": "/NinjaKick/service-worker.js",
+    "static/css/2.ff29d27e.chunk.css.map": "/NinjaKick/static/css/2.ff29d27e.chunk.css.map",
+    "static/css/main.ecfa3bbf.chunk.css.map": "/NinjaKick/static/css/main.ecfa3bbf.chunk.css.map",
+    "static/js/2.373895a0.chunk.js.LICENSE.txt": "/NinjaKick/static/js/2.373895a0.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.e9df8ef3.js",
+    "static/js/runtime-main.c917d36d.js",
     "static/css/2.ff29d27e.chunk.css",
     "static/js/2.373895a0.chunk.js",
     "static/css/main.ecfa3bbf.chunk.css",
-    "static/js/main.668c24b0.chunk.js"
+    "static/js/main.8c10dfe0.chunk.js"
   ]
 }
