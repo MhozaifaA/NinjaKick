@@ -85,7 +85,7 @@ export class NinjaKick extends Component {
         this.state = {
             Rocks: RandomRocks(5),
             Ninja: "left",
-            NinjaImage: "./ninja.png",
+            NinjaImage: "./NinjaKick/ninja.png",
             Score: 0,
             IsDead: false,
             HighScore: 0,
@@ -157,7 +157,7 @@ export class NinjaKick extends Component {
         if (this.state.IsDead) {
             this.IsRealDead = false;
             console.log("ded");
-            await this.setState({ Rocks: RandomRocks(this.state.RockVisible), IsDead: false, Score: 0, NinjaImage: `./ninja.png` });
+            await this.setState({ Rocks: RandomRocks(this.state.RockVisible), IsDead: false, Score: 0, NinjaImage: `./NinjaKick/ninja.png` });
             // await timeout(100);
             this.Timer.init();
             return;
@@ -196,7 +196,7 @@ export class NinjaKick extends Component {
             this.IsRealDead = true;
 
             if (this.state.Audio) {
-                let audio = new Audio(`./sound${0}.mp3`);
+                let audio = new Audio(`./NinjaKick/sound${0}.mp3`);
                 audio.play();
             }
             this.Timer.stop();
@@ -208,7 +208,7 @@ export class NinjaKick extends Component {
 
 
         let level = Math.ceil(this.state.Score / 50);
-        await this.setState({ NinjaImage: `./ninja${this.IsRealDead ? 0 : ""}.png`, Level: level === 0? 1:level });
+        await this.setState({ NinjaImage: `./NinjaKick/ninja${this.IsRealDead ? 0 : ""}.png`, Level: level === 0? 1:level });
         this.IsRealDead = false;
         //  await timeout(100);
 
@@ -225,13 +225,13 @@ export class NinjaKick extends Component {
         if (press.keyCode !== this.keyD && press.keyCode !== this.keyA)
             return;
         const num = this.state.IsDead ? 0 : randomIntFromInterval(1, 3);
-        await this.setState({ NinjaImage: `./ninja${num}.png` }
+        await this.setState({ NinjaImage: `./NinjaKick/ninja${num}.png` }
             //, async ()=> {
             //  //  await timeout(100);
             //}
         );
         if (this.state.Audio) {
-            let audio = new Audio(`./sound${num}.mp3`);
+            let audio = new Audio(`./NinjaKick/sound${num}.mp3`);
             audio.play();
         }
 
@@ -246,10 +246,10 @@ export class NinjaKick extends Component {
 
 
     handelFinish = () => {
-       this.setState({ IsDead: true, NinjaImage: `./ninja${0}.png`});
+        this.setState({ IsDead: true, NinjaImage: `./NinjaKick/ninja${0}.png`});
        this.IsRealDead = true;
        if (this.state.Audio) {
-           let audio = new Audio(`./sound${0}.mp3`);
+           let audio = new Audio(`./NinjaKick/sound${0}.mp3`);
            audio.play();
        }
        this.IsRealDead = false;
