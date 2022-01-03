@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "67a71b0c61e1184fda6fa50a5a3a1a18",
+    "revision": "8423f411c74e33e7c0868bf29095a7bc",
     "url": "/MhozaifaA/NinjaKick/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/MhozaifaA/NinjaKick/static/css/2.ff29d27e.chunk.css"
   },
   {
-    "revision": "fc845c563a65371391b6",
+    "revision": "691682562666bcc4e7fd",
     "url": "/MhozaifaA/NinjaKick/static/css/main.ecfa3bbf.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/MhozaifaA/NinjaKick/static/js/2.373895a0.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "fc845c563a65371391b6",
-    "url": "/MhozaifaA/NinjaKick/static/js/main.2462547b.chunk.js"
+    "revision": "691682562666bcc4e7fd",
+    "url": "/MhozaifaA/NinjaKick/static/js/main.05182994.chunk.js"
   },
   {
     "revision": "67aff7bbaea9ceb5f04d",
